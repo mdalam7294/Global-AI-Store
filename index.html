@@ -3,87 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global AI Bridge | Premium Store</title>
+    <title>Global AI Bridge | Elite Digital Marketplace</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
-        .product-card { transition: 0.4s; background: white; border-radius: 24px; overflow: hidden; border: 1px solid #e2e8f0; }
-        .product-card:hover { transform: translateY(-12px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        :root { --primary: #6366f1; --dark: #0f172a; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #fcfcfd; color: var(--dark); }
+        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.3); }
+        .product-card { transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); border-radius: 32px; background: white; border: 1px solid #f1f5f9; }
+        .product-card:hover { transform: translateY(-15px) scale(1.02); box-shadow: 0 40px 80px -20px rgba(0,0,0,0.1); }
+        .btn-premium { background: linear-gradient(135deg, #6366f1 0%, #4338ca 100%); transition: 0.3s; }
+        .btn-premium:hover { box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.5); transform: scale(1.02); }
         #admin-panel, #login-modal { display: none; }
     </style>
 </head>
 <body>
-    <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b p-4">
+    <nav class="glass sticky top-0 z-[100] px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <div class="bg-blue-600 p-2 rounded-xl text-white"><i class="fa-solid fa-bolt"></i></div>
-                <h1 class="text-xl font-black text-slate-800 tracking-tight">GLOBAL AI BRIDGE</h1>
+            <div class="flex items-center gap-4 group cursor-pointer" id="main-logo">
+                <div class="w-12 h-12 bg-indigo-600 rounded-2xl flex items-center justify-center text-white shadow-xl rotate-3 group-hover:rotate-0 transition-all">
+                    <i class="fa-solid fa-gem text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold tracking-tight">GLOBAL AI BRIDGE</h1>
+                    <p class="text-[10px] text-indigo-500 font-bold tracking-[3px] uppercase">Elite Marketplace</p>
+                </div>
             </div>
-            <div id="admin-indicator" class="hidden bg-green-500 text-white text-[10px] px-3 py-1 rounded-full font-bold uppercase">Admin Active</div>
+            <div class="flex items-center gap-6">
+                <div id="admin-badge" class="hidden bg-emerald-500 text-white text-[10px] px-4 py-1.5 rounded-full font-black uppercase tracking-widest">Master Admin</div>
+                <i class="fa-solid fa-cart-shopping text-slate-400 text-xl cursor-pointer hover:text-indigo-600 transition"></i>
+            </div>
         </div>
     </nav>
-    <main id="storefront" class="max-w-7xl mx-auto py-16 px-4">
-        <div class="text-center mb-16">
-            <h2 class="text-5xl font-black text-slate-900 mb-4">Digital Excellence</h2>
-            <p class="text-slate-500 text-lg">Premium AI Tools & Digital Products for International Markets.</p>
+    <main id="storefront" class="max-w-7xl mx-auto pt-24 pb-32 px-6">
+        <div class="text-center mb-20">
+            <span class="text-indigo-600 font-bold tracking-[4px] uppercase text-xs mb-4 block">World-Class Digital Assets</span>
+            <h2 class="text-6xl font-extrabold tracking-tighter mb-6">Elevate Your <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Business Logic.</span></h2>
+            <p class="text-slate-500 text-xl max-w-2xl mx-auto leading-relaxed">Experience the next generation of AI-driven tools and premium physical assets delivered globally.</p>
         </div>
-        <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            <div class="col-span-full text-center py-20">
-                <i class="fa-solid fa-circle-notch fa-spin text-3xl text-blue-600"></i>
-                <p class="mt-4 text-slate-400">Connecting to Global Database...</p>
+        <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
             </div>
-        </div>
     </main>
-    <section id="admin-panel" class="max-w-6xl mx-auto py-12 px-4">
-        <div class="bg-white rounded-[40px] shadow-2xl overflow-hidden border">
-            <div class="bg-slate-900 p-8 flex justify-between items-center text-white">
-                <div>
-                    <h2 class="text-2xl font-bold">Business Dashboard</h2>
-                    <p class="text-slate-400 text-sm">Manage your international listings</p>
-                </div>
-                <button onclick="logout()" class="bg-red-500 hover:bg-red-600 px-6 py-3 rounded-2xl font-bold transition-all">Logout</button>
-            </div>
+    <section id="admin-panel" class="max-w-7xl mx-auto py-12 px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
             
-            <div class="p-10 grid grid-cols-1 lg:grid-cols-3 gap-12">
-                <div class="lg:col-span-1">
-                    <h3 class="font-bold text-lg mb-6 text-slate-800">Add New Product</h3>
+            <div class="lg:col-span-4 grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-indigo-600 p-8 rounded-[2.5rem] text-white shadow-2xl">
+                    <p class="text-indigo-200 text-sm font-bold uppercase mb-2">Total Revenue</p>
+                    <h3 class="text-4xl font-black" id="wallet-balance">$0.00</h3>
+                </div>
+                <div class="bg-white p-8 rounded-[2.5rem] border shadow-sm">
+                    <p class="text-slate-400 text-sm font-bold uppercase mb-2">Withdrawal Method</p>
+                    <select id="payout-method" class="w-full bg-slate-50 border-none outline-none font-bold text-slate-800">
+                        <option>PayPal</option>
+                        <option>Razorpay / UPI</option>
+                        <option>Bank Transfer (SWIFT)</option>
+                    </select>
+                </div>
+                <div class="bg-slate-900 p-8 rounded-[2.5rem] text-white flex flex-col justify-center">
+                    <button class="bg-white text-slate-900 py-4 rounded-2xl font-black hover:bg-indigo-400 transition transform active:scale-95">WITHDRAW FUNDS</button>
+                </div>
+            </div>
+            <div class="lg:col-span-1">
+                <div class="bg-white p-8 rounded-[2.5rem] border sticky top-32">
+                    <h3 class="text-xl font-bold mb-6">List New Item</h3>
                     <form id="add-form" class="space-y-4">
-                        <input type="text" id="p-title" placeholder="Product Name" class="w-full p-4 bg-slate-50 border rounded-2xl outline-none focus:ring-2 focus:ring-blue-500" required>
-                        <input type="number" id="p-price" placeholder="Price in USD ($)" class="w-full p-4 bg-slate-50 border rounded-2xl outline-none" required>
-                        <input type="url" id="p-image" placeholder="Direct Image Link (URL)" class="w-full p-4 bg-slate-50 border rounded-2xl outline-none" required>
-                        <input type="url" id="p-link" placeholder="Affiliate/Buy Link" class="w-full p-4 bg-slate-50 border rounded-2xl outline-none" required>
-                        <textarea id="p-desc" placeholder="Product details..." class="w-full p-4 bg-slate-50 border rounded-2xl outline-none" rows="4" required></textarea>
-                        <button type="submit" class="w-full bg-blue-600 text-white py-5 rounded-2xl font-bold shadow-xl shadow-blue-200 hover:bg-blue-700 transition-all">PUBLISH TO STORE</button>
+                        <select id="p-type" class="w-full p-4 bg-slate-50 border rounded-2xl font-bold text-indigo-600 focus:ring-2 focus:ring-indigo-500 outline-none">
+                            <option value="affiliate">Affiliate Marketing</option>
+                            <option value="direct">Direct Sale (On Store)</option>
+                        </select>
+                        <input type="text" id="p-title" placeholder="Product Title" class="w-full p-4 bg-slate-50 border rounded-2xl outline-none" required>
+                        <input type="number" id="p-price" placeholder="Price ($)" class="w-full p-4 bg-slate-50 border rounded-2xl outline-none" required>
+                        <input type="url" id="p-image" placeholder="Image URL" class="w-full p-4 bg-slate-50 border rounded-2xl outline-none" required>
+                        <input type="url" id="p-link" placeholder="Affiliate/Payment Link" class="w-full p-4 bg-slate-50 border rounded-2xl outline-none" required>
+                        <textarea id="p-desc" placeholder="Product Description..." class="w-full p-4 bg-slate-50 border rounded-2xl outline-none" rows="3" required></textarea>
+                        <button type="submit" class="w-full btn-premium text-white py-5 rounded-2xl font-black uppercase tracking-widest shadow-xl">Push Live</button>
                     </form>
                 </div>
-                <div class="lg:col-span-2">
-                    <h3 class="font-bold text-lg mb-6 text-slate-800">Current Inventory</h3>
-                    <div id="admin-inventory" class="grid gap-4"></div>
+            </div>
+            <div class="lg:col-span-3">
+                <div class="bg-white p-8 rounded-[2.5rem] border">
+                    <h3 class="text-xl font-bold mb-8">Live Global Inventory</h3>
+                    <div id="admin-inventory" class="grid gap-6"></div>
                 </div>
             </div>
         </div>
     </section>
-    <div id="login-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/95 backdrop-blur-md">
-        <div class="bg-white p-10 rounded-[40px] shadow-2xl w-full max-w-md">
-            <div class="text-center mb-8">
-                <div class="w-20 h-20 bg-blue-50 text-blue-600 rounded-3xl flex items-center justify-center mx-auto mb-4 text-3xl">
-                    <i class="fa-solid fa-shield-halved"></i>
+    <div id="login-modal" class="fixed inset-0 z-[200] flex items-center justify-center bg-slate-900/95 backdrop-blur-xl px-6">
+        <div class="bg-white p-12 rounded-[3.5rem] shadow-2xl w-full max-w-md border">
+            <div class="text-center mb-10">
+                <div class="w-24 h-24 bg-indigo-50 text-indigo-600 rounded-[2.5rem] flex items-center justify-center mx-auto mb-6 text-4xl shadow-inner">
+                    <i class="fa-solid fa-fingerprint"></i>
                 </div>
-                <h3 class="text-3xl font-black text-slate-800">Admin Login</h3>
-                <p class="text-slate-400">Enter your master credentials</p>
+                <h3 class="text-4xl font-black text-slate-900 tracking-tighter">Security Check</h3>
+                <p class="text-slate-400 mt-2">Elite Admin Verification Required</p>
             </div>
-            <input type="email" id="email" placeholder="Admin Email" class="w-full p-5 bg-slate-50 border rounded-2xl mb-4 outline-none">
-            <input type="password" id="pass" placeholder="Password" class="w-full p-5 bg-slate-50 border rounded-2xl mb-8 outline-none">
-            <button onclick="handleLogin()" class="w-full bg-blue-600 text-white py-5 rounded-2xl font-bold text-lg shadow-xl shadow-blue-100">Unlock Dashboard</button>
-            <button onclick="document.getElementById('login-modal').style.display='none'" class="w-full mt-4 text-slate-400 font-medium">Exit</button>
+            <input type="email" id="email" placeholder="Master Email" class="w-full p-5 bg-slate-50 border-none rounded-2xl mb-4 outline-none focus:ring-2 focus:ring-indigo-500 font-semibold">
+            <input type="password" id="pass" placeholder="Security Password" class="w-full p-5 bg-slate-50 border-none rounded-2xl mb-10 outline-none focus:ring-2 focus:ring-indigo-500 font-semibold">
+            <button onclick="handleLogin()" class="w-full btn-premium text-white py-5 rounded-2xl font-black text-lg shadow-2xl">Verify Identity</button>
         </div>
     </div>
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
         import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
         import { getDatabase, ref, set, push, onValue, remove } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
-        // 🔥 PASTE YOUR KEYS HERE 🔥
+        // 🔥 IMPORTANT: REPLACE WITH YOUR REAL KEYS 🔥
         const firebaseConfig = {
             apiKey: "AIzaSyCQBSq6XD4H6mUWXorreTk8SYInEwgCd1M",
             authDomain: "global-ai-store.firebaseapp.com",
@@ -96,93 +121,95 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getDatabase(app);
-        // SECRET ACCESS: Type 'alamadmin' to login
-        let inputKeys = "";
-        window.addEventListener('keydown', (e) => {
-            inputKeys += e.key;
-            if(inputKeys.includes("alamadmin")) {
-                document.getElementById('login-modal').style.display = 'flex';
-                inputKeys = "";
-            }
-            if(inputKeys.length > 20) inputKeys = "";
-        });
+        // LOGIN TRIGGER: Tap logo 3 times
+        let taps = 0;
+        document.getElementById('main-logo').onclick = () => {
+            taps++;
+            if(taps === 3) { document.getElementById('login-modal').style.display='flex'; taps=0; }
+            setTimeout(() => taps = 0, 3000);
+        };
         window.handleLogin = () => {
             const e = document.getElementById('email').value;
             const p = document.getElementById('pass').value;
-            signInWithEmailAndPassword(auth, e, p).catch(() => alert("Access Denied!"));
+            signInWithEmailAndPassword(auth, e, p).catch(() => alert("Access Revoked: Invalid Identity"));
         };
         window.logout = () => signOut(auth);
         onAuthStateChanged(auth, (user) => {
             const isOwner = user && user.email === "websitedesignagency1@gmail.com";
             document.getElementById('admin-panel').style.display = isOwner ? 'block' : 'none';
             document.getElementById('storefront').style.display = isOwner ? 'none' : 'block';
-            document.getElementById('admin-indicator').style.display = isOwner ? 'block' : 'none';
+            document.getElementById('admin-badge').style.display = isOwner ? 'block' : 'none';
             document.getElementById('login-modal').style.display = 'none';
-            if(user && !isOwner) signOut(auth);
         });
-        // ADD DATA
+        // FORM SUBMISSION
         const form = document.getElementById('add-form');
         form.onsubmit = async (e) => {
             e.preventDefault();
-            const newRef = push(ref(db, 'global_products'));
-            await set(newRef, {
+            const productRef = push(ref(db, 'elite_products'));
+            await set(productRef, {
+                type: document.getElementById('p-type').value,
                 title: document.getElementById('p-title').value,
                 price: document.getElementById('p-price').value,
                 image: document.getElementById('p-image').value,
                 link: document.getElementById('p-link').value,
                 desc: document.getElementById('p-desc').value,
-                timestamp: Date.now()
+                created: Date.now()
             });
-            form.reset();
-            alert("Product is now LIVE internationally!");
+            form.reset(); alert("Successfully Deployed to Global Store.");
         };
-        // SYNC REAL-TIME
-        onValue(ref(db, 'global_products'), (snap) => {
-            const data = snap.val();
+        // SYNC STORE
+        onValue(ref(db, 'elite_products'), (snapshot) => {
+            const data = snapshot.val();
             const grid = document.getElementById('product-grid');
-            const inv = document.getElementById('admin-inventory');
-            grid.innerHTML = ""; inv.innerHTML = "";
+            const inventory = document.getElementById('admin-inventory');
+            grid.innerHTML = ""; inventory.innerHTML = "";
+            let totalRev = 0;
             
             if(!data) {
-                grid.innerHTML = "<p class='col-span-full text-center text-slate-400'>Store is currently being updated...</p>";
+                grid.innerHTML = "<div class='col-span-full py-40 text-center text-slate-300 font-bold'>System Standby: Awaiting Deployment</div>";
                 return;
             }
             Object.keys(data).reverse().forEach(id => {
                 const item = data[id];
-                // Customer Card
+                if(item.type === 'direct') totalRev += parseFloat(item.price);
+                // PUBLIC UI
                 grid.innerHTML += `
-                    <div class="product-card border shadow-sm">
-                        <img src="${item.image}" class="w-full h-64 object-cover bg-slate-100" onerror="this.src='https://via.placeholder.com/600x400?text=Premium+Product'">
-                        <div class="p-8">
-                            <div class="flex justify-between items-start mb-4">
-                                <h4 class="text-xl font-bold text-slate-800">${item.title}</h4>
-                                <span class="text-2xl font-black text-blue-600">$${item.price}</span>
-                            </div>
-                            <p class="text-slate-500 text-sm mb-8 leading-relaxed line-clamp-3">${item.desc}</p>
-                            <a href="${item.link}" target="_blank" class="block w-full py-4 bg-slate-900 text-white text-center rounded-2xl font-bold hover:bg-blue-600 transition-all shadow-lg">Get Started Now</a>
+                    <div class="product-card p-4 group">
+                        <div class="relative overflow-hidden rounded-[2rem] h-80 mb-8">
+                            <img src="${item.image}" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" onerror="this.src='https://via.placeholder.com/800x600?text=Premium+Asset'">
+                            <div class="absolute top-6 right-6 glass px-6 py-2 rounded-2xl font-black text-indigo-600 shadow-2xl">$${item.price}</div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                        </div>
+                        <div class="px-4">
+                            <span class="text-[10px] font-black uppercase tracking-[2px] text-indigo-500 mb-2 block">${item.type === 'affiliate' ? 'Affiliate Partner' : 'Direct Asset'}</span>
+                            <h4 class="text-2xl font-bold mb-4 tracking-tight">${item.title}</h4>
+                            <p class="text-slate-500 text-sm mb-8 leading-relaxed line-clamp-2">${item.desc}</p>
+                            <a href="${item.link}" target="_blank" class="block w-full py-5 btn-premium text-white text-center rounded-[1.5rem] font-black tracking-widest shadow-lg shadow-indigo-100 uppercase text-xs">
+                                ${item.type === 'affiliate' ? 'Get Official Access' : 'Purchase Securely'}
+                            </a>
                         </div>
                     </div>
                 `;
-                // Admin Entry
-                inv.innerHTML += `
-                    <div class="flex items-center justify-between p-5 bg-slate-50 rounded-2xl border border-slate-200">
-                        <div class="flex items-center gap-4">
-                            <img src="${item.image}" class="w-12 h-12 rounded-xl object-cover">
+                // ADMIN LISTING
+                inventory.innerHTML += `
+                    <div class="flex items-center justify-between p-6 bg-slate-50 rounded-[2rem] border border-slate-100 hover:bg-white transition shadow-hover">
+                        <div class="flex items-center gap-6">
+                            <img src="${item.image}" class="w-20 h-20 rounded-3xl object-cover shadow-lg">
                             <div>
-                                <h5 class="font-bold text-slate-800 text-sm">${item.title}</h5>
-                                <p class="text-xs text-blue-600 font-bold">$${item.price}</p>
+                                <h5 class="font-black text-slate-800">${item.title}</h5>
+                                <p class="text-xs font-bold ${item.type === 'affiliate' ? 'text-purple-500' : 'text-emerald-500'} uppercase tracking-widest">${item.type}</p>
                             </div>
                         </div>
-                        <button onclick="deleteProd('${id}')" class="p-3 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-xl transition-all"><i class="fa-solid fa-trash-can"></i></button>
+                        <div class="flex items-center gap-4">
+                            <span class="font-black text-lg">$${item.price}</span>
+                            <button onclick="removeProduct('${id}')" class="w-12 h-12 flex items-center justify-center text-red-400 hover:bg-red-50 rounded-2xl transition"><i class="fa-solid fa-trash-can"></i></button>
+                        </div>
                     </div>
                 `;
             });
+            document.getElementById('wallet-balance').innerText = `$${totalRev.toFixed(2)}`;
         });
-        window.deleteProd = (id) => {
-            if(confirm("Are you sure you want to delete this listing?")) {
-                remove(ref(db, `global_products/${id}`));
-            }
-        };
+        window.removeProduct = (id) => confirm("Archive this listing permanently?") && remove(ref(db, `elite_products/${id}`));
     </script>
 </body>
 </html>
